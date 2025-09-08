@@ -28,7 +28,7 @@ const menuData: MenuData = {
   menus: [
     {
       name: "Gulasch mit Rindfleisch",
-      price: "€3,00",
+      price: "€13,00",
       description: "Gulasch mit Rindfleisch + Salat, Brot & Getränk"
     },
     {

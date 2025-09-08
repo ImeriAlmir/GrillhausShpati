@@ -62,13 +62,16 @@ export default function Footer() {
                   className="text-muted-foreground hover:text-primary transition-colors duration-200"
                   data-testid="button-phone"
                 >
-                  +43 123 456 789
+                  +43 664 925 7201
                 </button>
               </div>
+              {/*
+              Email
               <div className="flex items-center text-muted-foreground">
                 <Mail className="w-5 h-5 text-primary mr-3" />
                 <span data-testid="text-email">info@grillhaus-shpati.at</span>
               </div>
+              */}
             </div>
           </div>
 
@@ -77,16 +80,16 @@ export default function Footer() {
             <h4 className="text-lg font-semibold text-foreground mb-4">Öffnungszeiten</h4>
             <div className="space-y-2 text-muted-foreground">
               <div className="flex justify-between" data-testid="text-hours-weekdays">
-                <span>Mo-Do:</span>
-                <span>11:00 - 22:00</span>
+                <span>Mo-Fr:</span>
+                <span>7:30 - 19:00</span>
               </div>
               <div className="flex justify-between" data-testid="text-hours-weekend">
-                <span>Fr-Sa:</span>
-                <span>11:00 - 23:00</span>
+                <span>Sa:</span>
+                <span>7:30 - 20:00</span>
               </div>
               <div className="flex justify-between" data-testid="text-hours-sunday">
-                <span>Sonntag:</span>
-                <span>12:00 - 21:00</span>
+                <span>Sonntag & Feiertage</span>
+                <span>geschlossen</span>
               </div>
             </div>
           </div>
