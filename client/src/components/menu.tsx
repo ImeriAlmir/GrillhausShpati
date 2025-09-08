@@ -60,12 +60,12 @@ const menuData: MenuData = {
     },
     {
       name: "Melange",
-      price: "€2,50",
+      price: "€3,00",
       description: "Traditionell serviert"
     },
     {
       name: "Tee",
-      price: "€3,00",
+      price: "€2,50",
       description: "Früchte-, Kamillen-, Schwarztee"
     }
   ]
