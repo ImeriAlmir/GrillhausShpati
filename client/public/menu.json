@@ -1,24 +1,41 @@
 {
   "essen": [
     {
-      "name": "Cevapcici (11 Stück)",
-      "price": "€9,90",
-      "description": "Traditionelle Hackfleischröllchen vom Grill"
+      "name": "Cevapcici (10 Stück)",
+      "price": "€12,00",
+      "description": "Traditionelle Cevapcici vom Grill mit Salat & Brot"
     },
     {
       "name": "Pljeskavica",
-      "price": "€11,50",
-      "description": "Große gegrillte Hackfleischpattie"
+      "price": "€8,00",
+      "description": "Große gegrilltes Hackfleischpattie mit Salat & Brot"
     },
     {
-      "name": "Raznjici",
+      "name": "Gegrilltes Hühnerfilet",
       "price": "€12,90",
-      "description": "Gegrillte Fleischspieße"
+      "description": "Gegrilltes Hühnerfilet mit Salat & Pommes"
     },
     {
-      "name": "Grillplatte für 2",
-      "price": "€24,90",
-      "description": "Gemischte Grillspezialitäten"
+      "name": "Cevapcici (5 Stück) + 1x Pljeskavica",
+      "price": "€12,00",
+      "description": "Traditionelle Cevapcici und Pljeskavica vom Grill mit Salat & Brot"
+    }
+  ],
+  "menus": [
+    {
+      "name": "Gulasch mit Rindfleisch",
+      "price": "€3,00",
+      "description": "Gulasch mit Rindfleisch + Salat, Brot & Getränk"
+    },
+    {
+      "name": "Pljeskavica Burger",
+      "price": "€15,00",
+      "description": "Pljeskavica Burger + Pommes + Getränk"
+    },
+    {
+      "name": "Chicken Burger",
+      "price": "€15,00",
+      "description": "Chicken Burger + Pommes + Getränk"
     }
   ],
   "getränke": [
@@ -38,26 +55,14 @@
       "description": "Coca Cola, Fanta, Sprite"
     },
     {
-      "name": "Türkischer Tee",
+      "name": "Melange",
       "price": "€2,50",
       "description": "Traditionell serviert"
     },
     {
-      "name": "Balkan-Kaffee",
+      "name": "Tee",
       "price": "€3,00",
-      "description": "Starker türkischer Kaffee"
+      "description": "Früchte-, Kamillen-, Schwarztee"
     }
-  ],
-  "menus":[
-    {
-        "name": "Menu 1",
-        "price": "€3,00",
-        "description": "Menu 1"
-    },
-    {
-        "name": "Menu 2",
-        "price": "€3,00",
-        "description": "Menu 2"
-    },
   ]
 }
