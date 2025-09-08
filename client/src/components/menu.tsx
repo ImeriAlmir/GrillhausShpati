@@ -4,7 +4,14 @@ import type { MenuData } from "@shared/schema";
 
 export default function Menu() {
   const { data: menuData, isLoading, error } = useQuery<MenuData>({
-    queryKey: ["/api/menu"],
+    queryKey: ["menu"],
+    queryFn: async () => {
+      const res = await fetch("/menu.json");
+      if (!res.ok) {
+        throw new Error("Failed to load menu.json");
+      }
+      return res.json();
+    },
   });
 
   if (isLoading) {
