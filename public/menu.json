@@ -1,0 +1,63 @@
+{
+  "essen": [
+    {
+      "name": "Cevapcici (11 Stück)",
+      "price": "€9,90",
+      "description": "Traditionelle Hackfleischröllchen vom Grill"
+    },
+    {
+      "name": "Pljeskavica",
+      "price": "€11,50",
+      "description": "Große gegrillte Hackfleischpattie"
+    },
+    {
+      "name": "Raznjici",
+      "price": "€12,90",
+      "description": "Gegrillte Fleischspieße"
+    },
+    {
+      "name": "Grillplatte für 2",
+      "price": "€24,90",
+      "description": "Gemischte Grillspezialitäten"
+    }
+  ],
+  "getränke": [
+    {
+      "name": "Bier",
+      "price": "€3,50",
+      "description": "0,5l vom Fass"
+    },
+    {
+      "name": "Mineralwasser",
+      "price": "€2,20",
+      "description": "0,5l still oder prickelnd"
+    },
+    {
+      "name": "Softdrink",
+      "price": "€2,80",
+      "description": "Coca Cola, Fanta, Sprite"
+    },
+    {
+      "name": "Türkischer Tee",
+      "price": "€2,50",
+      "description": "Traditionell serviert"
+    },
+    {
+      "name": "Balkan-Kaffee",
+      "price": "€3,00",
+      "description": "Starker türkischer Kaffee"
+    }
+  ],
+  "menus":[
+    {
+        "name": "Menu 1",
+        "price": "€3,00",
+        "description": "Menu 1"
+    },
+    {
+        "name": "Menu 2",
+        "price": "€3,00",
+        "description": "Menu 2"
+    },
+  ]
+}

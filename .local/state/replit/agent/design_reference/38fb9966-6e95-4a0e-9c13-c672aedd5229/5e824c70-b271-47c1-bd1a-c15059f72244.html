@@ -1,0 +1,543 @@
+<html lang="de" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grillhaus Shpati - Authentischer Balkan-Grill in Baden</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+    tailwind.config = {
+        theme: {
+            extend: {
+                borderRadius: {
+                    lg: "var(--radius)",
+                    md: "calc(var(--radius) - 2px)",
+                    sm: "calc(var(--radius) - 4px)",
+                },
+                colors: {
+                    background: "var(--background)",
+                    foreground: "var(--foreground)",
+                    card: {
+                        DEFAULT: "var(--card)",
+                        foreground: "var(--card-foreground)",
+                    },
+                    primary: {
+                        DEFAULT: "var(--primary)",
+                        foreground: "var(--primary-foreground)",
+                    },
+                    secondary: {
+                        DEFAULT: "var(--secondary)",
+                        foreground: "var(--secondary-foreground)",
+                    },
+                    muted: {
+                        DEFAULT: "var(--muted)",
+                        foreground: "var(--muted-foreground)",
+                    },
+                    accent: {
+                        DEFAULT: "var(--accent)",
+                        foreground: "var(--accent-foreground)",
+                    },
+                    border: "var(--border)",
+                    ring: "var(--ring)",
+                },
+                fontFamily: {
+                    sans: ["Inter", "system-ui", "sans-serif"],
+                }
+            },
+        }
+    };
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --background: hsl(0 0% 100%);
+            --foreground: hsl(0 0% 0%);
+            --card: hsl(0 0% 100%);
+            --card-foreground: hsl(0 0% 0%);
+            --primary: hsl(356 70% 51%);
+            --primary-foreground: hsl(0 0% 100%);
+            --secondary: hsl(0 0% 96%);
+            --secondary-foreground: hsl(0 0% 9%);
+            --muted: hsl(0 0% 96%);
+            --muted-foreground: hsl(0 0% 45%);
+            --accent: hsl(0 0% 96%);
+            --accent-foreground: hsl(0 0% 9%);
+            --border: hsl(0 0% 90%);
+            --ring: hsl(356 70% 51%);
+            --radius: 8px;
+        }
+
+        .hero-bg {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('https://images.unsplash.com/photo-1544025162-d76694265947?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1920&h=1080');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        .card-hover {
+            transition: all 200ms ease-in-out;
+        }
+
+        .card-hover:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .menu-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+        }
+
+        .cta-button {
+            background: var(--primary);
+            color: var(--primary-foreground);
+            transition: all 200ms ease-in-out;
+        }
+
+        .cta-button:hover {
+            background: hsl(356 70% 45%);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(211, 47, 47, 0.3);
+        }
+
+        @media (max-width: 768px) {
+            .hero-bg {
+                background-attachment: scroll;
+            }
+        }
+    </style>
+</head>
+<body class="bg-background text-foreground font-sans">
+    <!-- @COMPONENT: Header [Navigation with mobile menu toggle] -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border">
+        <nav class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <!-- Logo -->
+                <div class="flex-shrink-0">
+                    <h1 class="text-xl font-bold text-foreground">
+                        Grillhaus <span class="text-primary">Shpati</span>
+                    </h1>
+                </div>
+
+                <!-- Desktop Navigation -->
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="#startseite" class="text-foreground hover:text-primary transition-colors duration-200 font-medium">Startseite</a>
+                        <a href="#speisekarte" class="text-foreground hover:text-primary transition-colors duration-200 font-medium">Speisekarte</a>
+                        <a href="#standort" class="text-foreground hover:text-primary transition-colors duration-200 font-medium">Standort</a>
+                        <a href="#kontakt" class="text-foreground hover:text-primary transition-colors duration-200 font-medium">Kontakt</a>
+                    </div>
+                </div>
+
+                <!-- Mobile menu button -->
+                <div class="md:hidden">
+                    <button 
+                        id="mobile-menu-button" 
+                        class="text-foreground hover:text-primary focus:outline-none focus:text-primary transition-colors duration-200"
+                        data-event="click:toggleMobileMenu"
+                    >
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Mobile Navigation -->
+            <div id="mobile-menu" class="md:hidden hidden border-t border-border">
+                <div class="px-2 pt-2 pb-3 space-y-1">
+                    <a href="#startseite" class="block px-3 py-2 text-foreground hover:text-primary transition-colors duration-200 font-medium">Startseite</a>
+                    <a href="#speisekarte" class="block px-3 py-2 text-foreground hover:text-primary transition-colors duration-200 font-medium">Speisekarte</a>
+                    <a href="#standort" class="block px-3 py-2 text-foreground hover:text-primary transition-colors duration-200 font-medium">Standort</a>
+                    <a href="#kontakt" class="block px-3 py-2 text-foreground hover:text-primary transition-colors duration-200 font-medium">Kontakt</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <!-- @END_COMPONENT: Header -->
+
+    <!-- @COMPONENT: Hero [Main hero section with background image] -->
+    <section id="startseite" class="hero-bg min-h-screen flex items-center justify-center relative">
+        <!-- Cevapi being grilled on barbecue with flames and smoke -->
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center text-white">
+            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+                Authentischer <span class="text-red-400">Balkan-Grill</span><br>
+                in Baden
+            </h1>
+            <p class="text-xl sm:text-2xl mb-8 text-gray-200 max-w-2xl mx-auto">
+                Erleben Sie den wahren Geschmack des Balkans mit unseren frisch gegrillten Spezialitäten
+            </p>
+            <a 
+                href="tel:+43123456789" 
+                class="cta-button inline-flex items-center px-8 py-4 text-lg font-semibold rounded-lg shadow-lg"
+                data-event="click:makeCall"
+            >
+                <i class="fas fa-phone mr-3"></i>
+                Jetzt anrufen
+            </a>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: Hero -->
+
+    <!-- @COMPONENT: About [About us section with restaurant description] -->
+    <section id="uber-uns" class="py-16 sm:py-24 bg-background">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-4xl mx-auto text-center">
+                <h2 class="text-3xl sm:text-4xl font-bold text-foreground mb-8">
+                    Über <span class="text-primary">uns</span>
+                </h2>
+                <div class="bg-card p-8 sm:p-12 rounded-2xl shadow-lg border border-border">
+                    <p class="text-lg sm:text-xl text-muted-foreground leading-relaxed mb-6">
+                        Im Grillhaus Shpati servieren wir original Balkan-Spezialitäten wie Cevapcici und Pljeskavica – frisch vom Grill.
+                    </p>
+                    <p class="text-base sm:text-lg text-muted-foreground leading-relaxed">
+                        Unsere traditionellen Rezepte werden seit Generationen weitergegeben und mit den besten Zutaten zubereitet. 
+                        Genießen Sie authentische Balkan-Küche in gemütlicher Atmosphäre im Herzen von Baden.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: About -->
+
+    <!-- @COMPONENT: Menu [Dynamic menu section loaded from JSON] -->
+    <section id="speisekarte" class="py-16 sm:py-24 bg-muted">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl sm:text-4xl font-bold text-center text-foreground mb-4">
+                Unsere <span class="text-primary">Speisekarte</span>
+            </h2>
+            <p class="text-center text-muted-foreground mb-12 text-lg">
+                Frisch zubereitet mit den besten Zutaten
+            </p>
+
+            <div class="grid lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
+                <!-- Essen Section -->
+                <div class="menu-card card-hover p-6 sm:p-8">
+                    <h3 class="text-2xl font-bold text-foreground mb-6 flex items-center">
+                        <i class="fas fa-utensils text-primary mr-3"></i>
+                        Hauptgerichte
+                    </h3>
+                    <div id="essen-menu" class="space-y-4">
+                        <!-- @MAP: menu.essen.map(item => ( -->
+                        <div class="flex justify-between items-center py-3 border-b border-border last:border-b-0" data-bind="menu.essen">
+                            <div>
+                                <h4 class="font-semibold text-foreground" data-bind="item.name">Cevapcici (10 Stück)</h4>
+                                <p class="text-sm text-muted-foreground">Traditionelle Hackfleischröllchen vom Grill</p>
+                            </div>
+                            <span class="font-bold text-primary text-lg" data-bind="item.price">€9,90</span>
+                        </div>
+                        <div class="flex justify-between items-center py-3 border-b border-border last:border-b-0" data-bind="menu.essen">
+                            <div>
+                                <h4 class="font-semibold text-foreground" data-bind="item.name">Pljeskavica</h4>
+                                <p class="text-sm text-muted-foreground">Große gegrillte Hackfleischpattie</p>
+                            </div>
+                            <span class="font-bold text-primary text-lg" data-bind="item.price">€11,50</span>
+                        </div>
+                        <div class="flex justify-between items-center py-3 border-b border-border last:border-b-0">
+                            <div>
+                                <h4 class="font-semibold text-foreground">Raznjici</h4>
+                                <p class="text-sm text-muted-foreground">Gegrillte Fleischspieße</p>
+                            </div>
+                            <span class="font-bold text-primary text-lg">€12,90</span>
+                        </div>
+                        <div class="flex justify-between items-center py-3 border-b border-border last:border-b-0">
+                            <div>
+                                <h4 class="font-semibold text-foreground">Grillplatte für 2</h4>
+                                <p class="text-sm text-muted-foreground">Gemischte Grillspezialitäten</p>
+                            </div>
+                            <span class="font-bold text-primary text-lg">€24,90</span>
+                        </div>
+                        <!-- @END_MAP )) -->
+                    </div>
+                </div>
+
+                <!-- Getränke Section -->
+                <div class="menu-card card-hover p-6 sm:p-8">
+                    <h3 class="text-2xl font-bold text-foreground mb-6 flex items-center">
+                        <i class="fas fa-glass-cheers text-primary mr-3"></i>
+                        Getränke
+                    </h3>
+                    <div id="getränke-menu" class="space-y-4">
+                        <!-- @MAP: menu.getränke.map(item => ( -->
+                        <div class="flex justify-between items-center py-3 border-b border-border last:border-b-0" data-bind="menu.getränke">
+                            <div>
+                                <h4 class="font-semibold text-foreground" data-bind="item.name">Bier</h4>
+                                <p class="text-sm text-muted-foreground">0,5l vom Fass</p>
+                            </div>
+                            <span class="font-bold text-primary text-lg" data-bind="item.price">€3,50</span>
+                        </div>
+                        <div class="flex justify-between items-center py-3 border-b border-border last:border-b-0" data-bind="menu.getränke">
+                            <div>
+                                <h4 class="font-semibold text-foreground" data-bind="item.name">Mineralwasser</h4>
+                                <p class="text-sm text-muted-foreground">0,5l still oder prickelnd</p>
+                            </div>
+                            <span class="font-bold text-primary text-lg" data-bind="item.price">€2,20</span>
+                        </div>
+                        <div class="flex justify-between items-center py-3 border-b border-border last:border-b-0" data-bind="menu.getränke">
+                            <div>
+                                <h4 class="font-semibold text-foreground" data-bind="item.name">Softdrink</h4>
+                                <p class="text-sm text-muted-foreground">Coca Cola, Fanta, Sprite</p>
+                            </div>
+                            <span class="font-bold text-primary text-lg" data-bind="item.price">€2,80</span>
+                        </div>
+                        <div class="flex justify-between items-center py-3 border-b border-border last:border-b-0">
+                            <div>
+                                <h4 class="font-semibold text-foreground">Türkischer Tee</h4>
+                                <p class="text-sm text-muted-foreground">Traditionell serviert</p>
+                            </div>
+                            <span class="font-bold text-primary text-lg">€2,50</span>
+                        </div>
+                        <div class="flex justify-between items-center py-3 border-b border-border last:border-b-0">
+                            <div>
+                                <h4 class="font-semibold text-foreground">Balkan-Kaffee</h4>
+                                <p class="text-sm text-muted-foreground">Starker türkischer Kaffee</p>
+                            </div>
+                            <span class="font-bold text-primary text-lg">€3,00</span>
+                        </div>
+                        <!-- @END_MAP )) -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: Menu -->
+
+    <!-- @COMPONENT: Location [Google Maps integration section] -->
+    <section id="standort" class="py-16 sm:py-24 bg-background">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl sm:text-4xl font-bold text-center text-foreground mb-4">
+                Unser <span class="text-primary">Standort</span>
+            </h2>
+            <p class="text-center text-muted-foreground mb-12 text-lg">
+                Besuchen Sie uns im Herzen von Baden
+            </p>
+
+            <div class="max-w-4xl mx-auto">
+                <div class="bg-card rounded-2xl shadow-lg border border-border overflow-hidden">
+                    <div class="p-6 sm:p-8 text-center border-b border-border">
+                        <h3 class="text-xl font-semibold text-foreground mb-2">Grillhaus Shpati</h3>
+                        <p class="text-muted-foreground">Baden, Österreich</p>
+                    </div>
+                    
+                    <!-- Google Maps Embed -->
+                    <div class="h-96 w-full" data-implementation="Embed Google Maps using the provided link">
+                        <iframe 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2663.8234!2d16.231!3d47.998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDfCsDU5JzUzLjAiTiAxNsKwMTMnNTIuMCJF!5e0!3m2!1sde!2sat!4v1234567890"
+                            width="100%" 
+                            height="100%" 
+                            style="border:0;" 
+                            allowfullscreen="" 
+                            loading="lazy" 
+                            referrerpolicy="no-referrer-when-downgrade"
+                            class="grayscale hover:grayscale-0 transition-all duration-300"
+                            data-mock="true"
+                            data-implementation="Replace with actual Google Maps embed using provided link: https://maps.app.goo.gl/3SSnE6XphPNkcJ2j6?g_st=ic"
+                        ></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: Location -->
+
+    <!-- @COMPONENT: Footer [Contact information and social media] -->
+    <footer id="kontakt" class="bg-secondary py-16 border-t border-border">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Restaurant Info -->
+                <div>
+                    <h3 class="text-xl font-bold text-foreground mb-4">Grillhaus Shpati</h3>
+                    <p class="text-muted-foreground mb-4">
+                        Authentische Balkan-Küche im Herzen von Baden
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-muted-foreground hover:text-primary transition-colors duration-200">
+                            <i class="fab fa-facebook-f text-xl"></i>
+                        </a>
+                        <a href="#" class="text-muted-foreground hover:text-primary transition-colors duration-200">
+                            <i class="fab fa-instagram text-xl"></i>
+                        </a>
+                        <a href="#" class="text-muted-foreground hover:text-primary transition-colors duration-200">
+                            <i class="fab fa-google text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Kontakt -->
+                <div>
+                    <h4 class="text-lg font-semibold text-foreground mb-4">Kontakt</h4>
+                    <div class="space-y-3">
+                        <div class="flex items-center text-muted-foreground">
+                            <i class="fas fa-map-marker-alt w-5 text-primary mr-3"></i>
+                            <span>Baden, Österreich</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-phone w-5 text-primary mr-3"></i>
+                            <a 
+                                href="tel:+43123456789" 
+                                class="text-muted-foreground hover:text-primary transition-colors duration-200"
+                                data-event="click:makeCall"
+                            >
+                                +43 123 456 789
+                            </a>
+                        </div>
+                        <div class="flex items-center text-muted-foreground">
+                            <i class="fas fa-envelope w-5 text-primary mr-3"></i>
+                            <span>info@grillhaus-shpati.at</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Öffnungszeiten -->
+                <div>
+                    <h4 class="text-lg font-semibold text-foreground mb-4">Öffnungszeiten</h4>
+                    <div class="space-y-2 text-muted-foreground">
+                        <div class="flex justify-between">
+                            <span>Mo-Do:</span>
+                            <span>11:00 - 22:00</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span>Fr-Sa:</span>
+                            <span>11:00 - 23:00</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span>Sonntag:</span>
+                            <span>12:00 - 21:00</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Schnelllinks -->
+                <div>
+                    <h4 class="text-lg font-semibold text-foreground mb-4">Schnelllinks</h4>
+                    <div class="space-y-2">
+                        <a href="#startseite" class="block text-muted-foreground hover:text-primary transition-colors duration-200">Startseite</a>
+                        <a href="#speisekarte" class="block text-muted-foreground hover:text-primary transition-colors duration-200">Speisekarte</a>
+                        <a href="#standort" class="block text-muted-foreground hover:text-primary transition-colors duration-200">Standort</a>
+                        <a href="tel:+43123456789" class="block text-muted-foreground hover:text-primary transition-colors duration-200">Reservierung</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="border-t border-border mt-12 pt-8 text-center">
+                <p class="text-muted-foreground">
+                    © 2024 Grillhaus Shpati. Alle Rechte vorbehalten.
+                </p>
+            </div>
+        </div>
+    </footer>
+    <!-- @END_COMPONENT: Footer -->
+
+    <script>
+        // TODO: Implement business logic, API calls, or state management
+        
+        (function() {
+            // Mobile menu toggle functionality
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            
+            if (mobileMenuButton && mobileMenu) {
+                mobileMenuButton.addEventListener('click', function() {
+                    mobileMenu.classList.toggle('hidden');
+                    
+                    // Toggle icon
+                    const icon = mobileMenuButton.querySelector('i');
+                    if (mobileMenu.classList.contains('hidden')) {
+                        icon.className = 'fas fa-bars text-xl';
+                    } else {
+                        icon.className = 'fas fa-times text-xl';
+                    }
+                });
+            }
+
+            // Close mobile menu when clicking on links
+            const mobileMenuLinks = mobileMenu.querySelectorAll('a');
+            mobileMenuLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    mobileMenu.classList.add('hidden');
+                    const icon = mobileMenuButton.querySelector('i');
+                    icon.className = 'fas fa-bars text-xl';
+                });
+            });
+
+            // Smooth scrolling for navigation links
+            const navLinks = document.querySelectorAll('a[href^="#"]');
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    
+                    if (targetElement) {
+                        const offsetTop = targetElement.offsetTop - 80; // Account for fixed header
+                        window.scrollTo({
+                            top: offsetTop,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+
+            // Sample menu data for demonstration
+            // TODO: Load this from actual menu.json file
+            const sampleMenuData = {
+                "essen": [
+                    { "name": "Cevapcici (10 Stück)", "price": "€9,90", "description": "Traditionelle Hackfleischröllchen vom Grill" },
+                    { "name": "Pljeskavica", "price": "€11,50", "description": "Große gegrillte Hackfleischpattie" }
+                ],
+                "getränke": [
+                    { "name": "Bier", "price": "€3,50", "description": "0,5l vom Fass" },
+                    { "name": "Mineralwasser", "price": "€2,20", "description": "0,5l still oder prickelnd" },
+                    { "name": "Softdrink", "price": "€2,80", "description": "Coca Cola, Fanta, Sprite" }
+                ]
+            };
+
+            // Function to load menu from JSON
+            async function loadMenu() {
+                try {
+                    // TODO: Replace with actual fetch from menu.json
+                    // const response = await fetch('./menu.json');
+                    // const menuData = await response.json();
+                    
+                    // For demo purposes, using sample data
+                    const menuData = sampleMenuData;
+                    
+                    console.log('Menu loaded:', menuData);
+                    // TODO: Implement dynamic menu rendering here
+                    
+                } catch (error) {
+                    console.error('Error loading menu:', error);
+                    // TODO: Implement error handling for menu loading
+                }
+            }
+
+            // Load menu on page load
+            document.addEventListener('DOMContentLoaded', loadMenu);
+
+            // Intersection Observer for scroll animations
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -100px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+
+            // Apply fade-in animation to cards
+            const cards = document.querySelectorAll('.menu-card, .card-hover');
+            cards.forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                card.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+                observer.observe(card);
+            });
+
+        })();
+    </script>
+</body>
+</html>
